@@ -108,7 +108,173 @@ class _DashbordPageState extends State<DashbordPage> {
           },
         ),
       ),
-      drawer: const Drawer(),
+      drawer: Drawer(
+        child: SafeArea(
+          child: ListTileTheme(
+            textColor: Colors.black,
+            iconColor: Colors.black,
+            child: Column(
+              children: [
+                const SizedBox(height: 20),
+                Image.network(
+                  "https://flutkit.coderthemes.com/images/logo-main.png",
+                  height: 100,
+                  width: 100,
+                ),
+                const SizedBox(height: 15),
+                Container(
+                  width: 50,
+                  height: 25,
+                  decoration: BoxDecoration(
+                    color: Colors.indigo.shade50,
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(5),
+                    ),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      "12.0",
+                      style: TextStyle(
+                        color: Colors.indigo,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 15),
+                const Text(
+                  "Flutter 3.0.5 (Latest)",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                ListTile(
+                  title: const Text(
+                    "Dark Mode",
+                  ),
+                  leading: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.brown.shade50,
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(5),
+                      ),
+                    ),
+                    height: 40,
+                    width: 40,
+                    child: const Icon(
+                      Icons.dark_mode_outlined,
+                      color: Colors.brown,
+                    ),
+                  ),
+                  trailing: const Icon(Icons.arrow_forward_ios),
+                ),
+                const SizedBox(height: 20),
+                ListTile(
+                  title: const Text(
+                    "Language",
+                  ),
+                  leading: Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.orange.shade50,
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(5),
+                      ),
+                    ),
+                    child: const Icon(
+                      Icons.language,
+                      color: Colors.orange,
+                    ),
+                  ),
+                  trailing: const Icon(Icons.arrow_forward_ios),
+                ),
+                const SizedBox(height: 20),
+                ListTile(
+                  title: const Text(
+                    "Right to Left (RTL)",
+                  ),
+                  leading: Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.blue.shade50,
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(5),
+                      ),
+                    ),
+                    child: const Icon(
+                      Icons.arrow_right_alt,
+                      color: Colors.blue,
+                    ),
+                  ),
+                  trailing: const Icon(Icons.arrow_forward_ios),
+                ),
+                const SizedBox(height: 20),
+                const Divider(
+                  color: Colors.grey,
+                ),
+                ListTile(
+                  title: const Text(
+                    "Documentation",
+                  ),
+                  leading: Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.blue.shade50,
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(5),
+                      ),
+                    ),
+                    child: const Icon(
+                      Icons.book,
+                      color: Colors.blue,
+                    ),
+                  ),
+                  trailing: const Icon(Icons.arrow_forward_ios),
+                ),
+                const SizedBox(height: 20),
+                ListTile(
+                  title: const Text(
+                    "Change Log",
+                  ),
+                  leading: Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.orange.shade50,
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(5),
+                      ),
+                    ),
+                    child: const Icon(
+                      Icons.padding_sharp,
+                      color: Colors.orange,
+                    ),
+                  ),
+                  trailing: const Icon(Icons.arrow_forward_ios),
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.indigoAccent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: const Text(
+                    "BUY NOW",
+                    style: TextStyle(fontWeight: FontWeight.w500),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: false,
@@ -117,7 +283,7 @@ class _DashbordPageState extends State<DashbordPage> {
         unselectedItemColor: Colors.grey,
         currentIndex: _currentIndex,
         backgroundColor: Colors.white,
-        elevation: 0,
+        elevation: 5,
         onTap: (index) {
           bottomTapped(index);
         },
