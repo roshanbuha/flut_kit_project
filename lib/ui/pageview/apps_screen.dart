@@ -1,3 +1,4 @@
+import 'package:flut_kit_project/cookifyApp/ui/splash_screen.dart';
 import 'package:flut_kit_project/utils/card_widgets.dart';
 import 'package:flut_kit_project/utils/coming_very_soon_container.dart';
 import 'package:flut_kit_project/utils/text_widget.dart';
@@ -35,8 +36,23 @@ class _AppScreenState extends State<AppScreen> {
             const SizedBox(height: 15),
             Wrap(
               children: [
-                CardWidgets(icon: Icons.cake, title: "Homemade"),
-                CardWidgets(icon: Icons.cookie, title: "Cookify"),
+                CardWidgets(
+                  icon: Icons.cake,
+                  title: "Homemade",
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const CookifySplashScreen(),
+                      ),
+                    );
+                  },
+                  child: CardWidgets(
+                    icon: Icons.cookie,
+                    title: "Cookify",
+                  ),
+                ),
                 CardWidgets(icon: Icons.health_and_safety, title: "Medi Care"),
                 CardWidgets(icon: Icons.shopping_bag, title: "Shopping"),
                 CardWidgets(icon: Icons.home, title: "Estate"),
