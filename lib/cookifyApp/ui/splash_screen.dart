@@ -34,15 +34,15 @@ class _CookifySplashScreenState extends State<CookifySplashScreen> {
   Widget _buildText() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+      children: const [
         Padding(
-          padding: const EdgeInsets.only(top: 70, left: 30),
+          padding: EdgeInsets.only(top: 70, left: 30),
           child: Text(
             "Welcome to\nCookify",
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontFamily: "Mynerve",
-              color: Colors.deepOrangeAccent.shade100,
+              color: Color(0xFFF37C83),
               fontSize: 50,
             ),
           ),
@@ -66,10 +66,10 @@ class _CookifySplashScreenState extends State<CookifySplashScreen> {
                   ),
                 );
               },
-              child: Text(
+              child: const Text(
                 "SIGN UP",
                 style: TextStyle(
-                  color: Colors.deepOrangeAccent.shade100,
+                  color: Color(0xFFF37C83),
                   fontSize: 20,
                   fontFamily: "Mynerve",
                   fontWeight: FontWeight.bold,
@@ -81,7 +81,7 @@ class _CookifySplashScreenState extends State<CookifySplashScreen> {
               width: 150,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepOrangeAccent.shade100,
+                  backgroundColor: const Color(0xFFF37C83),
                 ),
                 onPressed: () {
                   Navigator.of(context).push(

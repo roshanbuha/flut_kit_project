@@ -20,7 +20,6 @@ class _CardWidgetsState extends State<CardWidgets> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.grey[100],
       elevation: 0,
       child: Container(
         width: MediaQuery.of(context).size.width * 0.42,

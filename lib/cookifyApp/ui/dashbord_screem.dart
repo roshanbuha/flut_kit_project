@@ -1,4 +1,6 @@
 import 'package:flut_kit_project/cookifyApp/ui/home_screen.dart';
+import 'package:flut_kit_project/cookifyApp/ui/meal_screen.dart';
+import 'package:flut_kit_project/cookifyApp/ui/profile_screen.dart';
 import 'package:flut_kit_project/cookifyApp/ui/show_case_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -93,8 +95,8 @@ class _CookDashBordScreenState extends State<CookDashBordScreen> {
       children: const [
         CookHomeScreen(),
         CookShowCaseScreen(),
-        CookShowCaseScreen(),
-        CookShowCaseScreen(),
+        CookMealScreen(),
+        CookProfileScreen(),
       ],
     );
   }

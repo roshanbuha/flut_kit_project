@@ -1,3 +1,4 @@
+import 'package:flut_kit_project/cookifyApp/ui/recipe_screen.dart';
 import 'package:flutter/material.dart';
 
 class CookShowCaseScreen extends StatefulWidget {
@@ -20,11 +21,38 @@ class _CookShowCaseScreenState extends State<CookShowCaseScreen> {
             const SizedBox(height: 15),
             _buildListCategories(),
             const SizedBox(height: 15),
-            _buildFoodList(),
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const CookRecipeScreen(),
+                  ),
+                );
+              },
+              child: _buildFoodList(),
+            ),
             const SizedBox(height: 20),
-            _buildFoodList(),
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const CookRecipeScreen(),
+                  ),
+                );
+              },
+              child: _buildFoodList(),
+            ),
             const SizedBox(height: 20),
-            _buildFoodList(),
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const CookRecipeScreen(),
+                  ),
+                );
+              },
+              child: _buildFoodList(),
+            ),
             const SizedBox(height: 20),
           ],
         ),
@@ -46,6 +74,7 @@ class _CookShowCaseScreenState extends State<CookShowCaseScreen> {
               ),
             ),
             child: TextFormField(
+              cursorColor: Colors.white,
               decoration: const InputDecoration(
                 hintText: "Search",
                 hintStyle: TextStyle(
@@ -56,6 +85,7 @@ class _CookShowCaseScreenState extends State<CookShowCaseScreen> {
                   Icons.search,
                   color: Colors.grey,
                 ),
+                border: InputBorder.none,
               ),
             ),
           ),
@@ -152,6 +182,7 @@ class _CookShowCaseScreenState extends State<CookShowCaseScreen> {
                 title ?? "",
                 style: const TextStyle(
                   color: Color(0xFFF37C83),
+                  fontFamily: "Mynerve",
                 ),
               ),
             ],
@@ -165,14 +196,18 @@ class _CookShowCaseScreenState extends State<CookShowCaseScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image.network(
-          "https://c0.wallpaperflare.com/preview/839/412/980/food-and-drink-pizza-pizzas-tomato.jpg",
+        ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: Image.asset(
+            "assets/cook/food.jpeg",
+          ),
         ),
         const SizedBox(height: 10),
         const Text(
           "Cacoa Maca Walnut Milk",
           style: TextStyle(
             color: Colors.white,
+            fontFamily: "Mynerve",
           ),
         ),
         const SizedBox(height: 10),
@@ -180,6 +215,7 @@ class _CookShowCaseScreenState extends State<CookShowCaseScreen> {
           "Easy, quick and yet so delicious!",
           style: TextStyle(
             color: Colors.white,
+            fontFamily: "Mynerve",
           ),
         ),
         const SizedBox(height: 10),
@@ -194,6 +230,7 @@ class _CookShowCaseScreenState extends State<CookShowCaseScreen> {
               "100",
               style: TextStyle(
                 color: Colors.grey,
+                fontFamily: "Mynerve",
               ),
             ),
             SizedBox(width: 20),
@@ -206,6 +243,7 @@ class _CookShowCaseScreenState extends State<CookShowCaseScreen> {
               "50'",
               style: TextStyle(
                 color: Colors.grey,
+                fontFamily: "Mynerve",
               ),
             ),
             SizedBox(width: 20),
@@ -213,6 +251,7 @@ class _CookShowCaseScreenState extends State<CookShowCaseScreen> {
               "2 Ingredients",
               style: TextStyle(
                 color: Colors.grey,
+                fontFamily: "Mynerve",
               ),
             )
           ],

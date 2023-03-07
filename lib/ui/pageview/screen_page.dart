@@ -16,9 +16,15 @@ class _ScreenPageState extends State<ScreenPage> {
     return SingleChildScrollView(
       child: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextWidget(text: "APPS"),
+            Padding(
+              padding: const EdgeInsets.only(left: 15),
+              child: Row(
+                children: [
+                  TextWidget(text: "APPS"),
+                ],
+              ),
+            ),
             const SizedBox(height: 15),
             Wrap(
               children: [
@@ -36,7 +42,14 @@ class _ScreenPageState extends State<ScreenPage> {
               ],
             ),
             const SizedBox(height: 15),
-            TextWidget(text: "PAGES"),
+            Padding(
+              padding: const EdgeInsets.only(left: 15),
+              child: Row(
+                children: [
+                  TextWidget(text: "PAGES"),
+                ],
+              ),
+            ),
             const SizedBox(height: 15),
             Wrap(
               children: [

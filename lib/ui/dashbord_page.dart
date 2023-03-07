@@ -1,3 +1,4 @@
+import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flut_kit_project/ui/pageview/animation_screen.dart';
 import 'package:flut_kit_project/ui/pageview/apps_screen.dart';
 import 'package:flut_kit_project/ui/pageview/material_page.dart';
@@ -6,34 +7,41 @@ import 'package:flut_kit_project/ui/pageview/screen_page.dart';
 import 'package:flutter/material.dart';
 
 class DashbordPage extends StatefulWidget {
-  const DashbordPage({Key? key}) : super(key: key);
-
+  DashbordPage({
+    Key? key,
+    this.dark,
+    this.onChange,
+  }) : super(key: key);
+  bool? dark;
+  Function(bool)? onChange;
   @override
   State<DashbordPage> createState() => _DashbordPageState();
 }
 
 class _DashbordPageState extends State<DashbordPage> {
   int _currentIndex = 0;
-  static const List<Widget> _appBarTitle = <Widget>[
-    Text(
+  bool isDarkModeEnabled = false;
+
+  static final List<Widget> _appBarTitle = <Widget>[
+    const Text(
       'Animation',
-      style: TextStyle(color: Colors.black),
+      // style: TextStyle(color: Colors.black),
     ),
-    Text(
+    const Text(
       'Apps',
-      style: TextStyle(color: Colors.black),
+      // style: TextStyle(color: Colors.black),
     ),
-    Text(
+    const Text(
       'Screen',
-      style: TextStyle(color: Colors.black),
+      // style: TextStyle(color: Colors.black),
     ),
-    Text(
+    const Text(
       'Material Widget',
-      style: TextStyle(color: Colors.black),
+      // style: TextStyle(color: Colors.black),
     ),
-    Text(
+    const Text(
       'Other Widget',
-      style: TextStyle(color: Colors.black),
+      // style: TextStyle(color: Colors.black),
     ),
   ];
 
@@ -87,19 +95,16 @@ class _DashbordPageState extends State<DashbordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: buildPageView(),
       appBar: AppBar(
         centerTitle: false,
         elevation: 0,
-        backgroundColor: Colors.white,
         title: _appBarTitle.elementAt(_currentIndex),
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(
               icon: const Icon(
                 Icons.menu,
-                color: Colors.black,
               ),
               onPressed: () {
                 Scaffold.of(context).openDrawer();
@@ -149,7 +154,15 @@ class _DashbordPageState extends State<DashbordPage> {
                   ),
                 ),
                 const SizedBox(height: 20),
+                DayNightSwitcher(
+                  isDarkModeEnabled: isDarkModeEnabled,
+                  onStateChanged: (isDarkModeEnabled) {
+                    this.isDarkModeEnabled = isDarkModeEnabled;
+                    widget.onChange!(isDarkModeEnabled);
+                  },
+                ),
                 ListTile(
+                  onTap: () {},
                   title: const Text(
                     "Dark Mode",
                   ),
@@ -282,7 +295,6 @@ class _DashbordPageState extends State<DashbordPage> {
         selectedItemColor: Colors.indigo,
         unselectedItemColor: Colors.grey,
         currentIndex: _currentIndex,
-        backgroundColor: Colors.white,
         elevation: 5,
         onTap: (index) {
           bottomTapped(index);

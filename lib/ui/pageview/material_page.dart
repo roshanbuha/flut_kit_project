@@ -16,9 +16,15 @@ class _MaterialPageScreenState extends State<MaterialPageScreen> {
     return SingleChildScrollView(
       child: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextWidget(text: "BASIC"),
+            Padding(
+              padding: const EdgeInsets.only(left: 15),
+              child: Row(
+                children: [
+                  TextWidget(text: "BASIC"),
+                ],
+              ),
+            ),
             const SizedBox(height: 15),
             Wrap(
               children: [
@@ -34,7 +40,14 @@ class _MaterialPageScreenState extends State<MaterialPageScreen> {
               ],
             ),
             const SizedBox(height: 15),
-            TextWidget(text: "ADVANCED"),
+            Padding(
+              padding: const EdgeInsets.only(left: 15),
+              child: Row(
+                children: [
+                  TextWidget(text: "ADVANCED"),
+                ],
+              ),
+            ),
             const SizedBox(height: 15),
             Wrap(
               children: [

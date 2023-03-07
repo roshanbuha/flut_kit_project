@@ -17,9 +17,15 @@ class _AppScreenState extends State<AppScreen> {
     return SingleChildScrollView(
       child: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextWidget(text: "COOL ANIMATION"),
+            Padding(
+              padding: const EdgeInsets.only(left: 15),
+              child: Row(
+                children: [
+                  TextWidget(text: "COOL ANIMATION"),
+                ],
+              ),
+            ),
             const SizedBox(height: 15),
             Wrap(
               children: [
@@ -32,7 +38,14 @@ class _AppScreenState extends State<AppScreen> {
               ],
             ),
             const SizedBox(height: 15),
-            TextWidget(text: "FULL APPS"),
+            Padding(
+              padding: const EdgeInsets.only(left: 15),
+              child: Row(
+                children: [
+                  TextWidget(text: "FULL APPS"),
+                ],
+              ),
+            ),
             const SizedBox(height: 15),
             Wrap(
               children: [
@@ -62,7 +75,14 @@ class _AppScreenState extends State<AppScreen> {
               ],
             ),
             const SizedBox(height: 15),
-            TextWidget(text: "MATERIAL YOU"),
+            Padding(
+              padding: const EdgeInsets.only(left: 15),
+              child: Row(
+                children: [
+                  TextWidget(text: "MATERIAL YOU"),
+                ],
+              ),
+            ),
             const SizedBox(height: 15),
             Wrap(
               children: [

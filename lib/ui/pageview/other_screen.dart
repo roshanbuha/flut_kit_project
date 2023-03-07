@@ -16,9 +16,15 @@ class _OtherScreenState extends State<OtherScreen> {
     return SingleChildScrollView(
       child: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextWidget(text: "SYNCFUSION"),
+            Padding(
+              padding: const EdgeInsets.only(left: 15),
+              child: Row(
+                children: [
+                  TextWidget(text: "SYNCFUSION"),
+                ],
+              ),
+            ),
             const SizedBox(height: 15),
             Wrap(
               children: [
@@ -34,7 +40,14 @@ class _OtherScreenState extends State<OtherScreen> {
               ],
             ),
             const SizedBox(height: 15),
-            TextWidget(text: "CUPERTINO"),
+            Padding(
+              padding: const EdgeInsets.only(left: 15),
+              child: Row(
+                children: [
+                  TextWidget(text: "CUPERTINO"),
+                ],
+              ),
+            ),
             const SizedBox(height: 15),
             Wrap(
               children: [

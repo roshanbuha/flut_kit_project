@@ -1,5 +1,7 @@
 import 'package:flut_kit_project/cookifyApp/comman/text_filed_widget.dart';
+import 'package:flut_kit_project/cookifyApp/ui/dashbord_screem.dart';
 import 'package:flut_kit_project/cookifyApp/ui/forgot_password.dart';
+import 'package:flut_kit_project/cookifyApp/ui/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class CookSignScreen extends StatefulWidget {
@@ -140,7 +142,13 @@ class _CookSignScreenState extends State<CookSignScreen> {
       width: double.maxFinite,
       height: 45,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const CookDashBordScreen(),
+            ),
+          );
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: const Color(0xFFF37C83),
         ),
@@ -161,7 +169,13 @@ class _CookSignScreenState extends State<CookSignScreen> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const CookLoginScreen(),
+              ),
+            );
+          },
           child: const Text(
             "I have already an account",
             style: TextStyle(
