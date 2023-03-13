@@ -1,3 +1,4 @@
+import 'package:flut_kit_project/cookifyApp/comman/trending_card.dart';
 import 'package:flut_kit_project/cookifyApp/ui/recipe_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -175,6 +176,28 @@ class _CookHomeScreenState extends State<CookHomeScreen> {
           ),
         ),
         Positioned(
+          bottom: 0,
+          child: Container(
+            height: 180,
+            width: 390,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: FractionalOffset.topCenter,
+                end: FractionalOffset.bottomCenter,
+                stops: [0.0, 1.0],
+                colors: [
+                  Colors.white10,
+                  Color(0xFFF37C83),
+                ],
+              ),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(10),
+                bottomRight: Radius.circular(10),
+              ),
+            ),
+          ),
+        ),
+        Positioned(
           bottom: 30,
           left: 20,
           child: Column(
@@ -227,128 +250,25 @@ class _CookHomeScreenState extends State<CookHomeScreen> {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          _buildViewCard(
+          TrendingCard(
             image: "assets/cook/matar_paneer.jpeg",
             text: "South",
             cardText: "Mater Paneer",
             descriptionText: "30 Recipes | 1 Serving",
           ),
           const SizedBox(width: 20),
-          _buildViewCard(
+          TrendingCard(
             image: "assets/cook/matar_paneer.jpeg",
             text: "Non Veg",
             cardText: "Tandoori Chicken",
             descriptionText: "30 Recipes | 1 Serving",
           ),
           const SizedBox(width: 20),
-          _buildViewCard(
+          TrendingCard(
             image: "assets/cook/matar_paneer.jpeg",
             text: "Cheese",
             cardText: "Aloo Gobi",
             descriptionText: "30 Recipes | 1 Serving",
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildViewCard({
-    String? image,
-    String? text,
-    String? cardText,
-    String? descriptionText,
-  }) {
-    return SizedBox(
-      width: 280,
-      child: Stack(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: Image.asset(
-              "$image",
-              fit: BoxFit.cover,
-              height: 350,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(15),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  width: 80,
-                  height: 25,
-                  decoration: const BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(6),
-                    ),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "$text",
-                      style: const TextStyle(
-                        fontFamily: "Mynerve",
-                        fontSize: 18,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Positioned(
-            bottom: 10,
-            left: 20,
-            child: SizedBox(
-              width: 240,
-              height: 100,
-              child: Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                color: Colors.black54,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "$cardText",
-                            style: const TextStyle(
-                              fontFamily: "Mynerve",
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                            ),
-                          ),
-                          const Icon(
-                            Icons.bookmark,
-                            color: Color(0xFFF37C83),
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Text(
-                        "$descriptionText",
-                        style: const TextStyle(
-                          fontFamily: "Mynerve",
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
           ),
         ],
       ),

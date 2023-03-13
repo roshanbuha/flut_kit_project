@@ -1,4 +1,5 @@
 import 'package:date_picker_timeline/date_picker_widget.dart';
+import 'package:flut_kit_project/cookifyApp/comman/meal_card.dart';
 import 'package:flut_kit_project/cookifyApp/ui/recipe_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -35,7 +36,7 @@ class _CookMealScreenState extends State<CookMealScreen> {
                   ),
                 );
               },
-              child: _buildViewCard(
+              child: MealCard(
                 text: "Breakfast",
                 title: "Poached Egg",
                 time: "Breakfast Time : 07:30",
@@ -51,7 +52,7 @@ class _CookMealScreenState extends State<CookMealScreen> {
                   ),
                 );
               },
-              child: _buildViewCard(
+              child: MealCard(
                 text: "Lunch",
                 title: "Burger",
                 time: "Lunch Time : 01:10",
@@ -67,7 +68,7 @@ class _CookMealScreenState extends State<CookMealScreen> {
                   ),
                 );
               },
-              child: _buildViewCard(
+              child: MealCard(
                 text: "Snacks",
                 title: "lemonade",
                 time: "Snacks Time : 05:15",
@@ -83,7 +84,7 @@ class _CookMealScreenState extends State<CookMealScreen> {
                   ),
                 );
               },
-              child: _buildViewCard(
+              child: MealCard(
                 text: "Dinner",
                 title: "Pop Corn",
                 time: "Dinner Time : 08:30",
@@ -254,62 +255,6 @@ class _CookMealScreenState extends State<CookMealScreen> {
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildViewCard({
-    String? text,
-    String? title,
-    String? time,
-    String? image,
-  }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          '$text',
-          style: const TextStyle(
-            fontFamily: "Mynerve",
-            color: Colors.grey,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 10),
-        Card(
-          color: Colors.white10,
-          child: ListTile(
-            title: Text(
-              "$title",
-              style: const TextStyle(
-                fontFamily: "Mynerve",
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            subtitle: Text(
-              "$time",
-              style: const TextStyle(
-                fontFamily: "Mynerve",
-                color: Colors.grey,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            leading: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                "$image",
-                fit: BoxFit.cover,
-                width: 50,
-                height: 50,
-              ),
-            ),
-            trailing: const Icon(
-              Icons.keyboard_arrow_right,
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

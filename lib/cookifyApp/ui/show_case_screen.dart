@@ -1,3 +1,4 @@
+import 'package:flut_kit_project/cookifyApp/comman/food_catagory_card.dart';
 import 'package:flut_kit_project/cookifyApp/ui/recipe_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -117,76 +118,32 @@ class _CookShowCaseScreenState extends State<CookShowCaseScreen> {
         padding: const EdgeInsets.all(5.0),
         child: Row(
           children: [
-            _buildViewCard(
+            FoodCategoryCard(
               image: Icons.all_inbox,
               title: "All",
             ),
             const SizedBox(width: 15),
-            _buildViewCard(
+            FoodCategoryCard(
               image: Icons.fastfood_outlined,
               title: "FastFood",
             ),
             const SizedBox(width: 15),
-            _buildViewCard(
+            FoodCategoryCard(
               image: Icons.all_inbox,
               title: "Pizza",
             ),
             const SizedBox(width: 15),
-            _buildViewCard(
+            FoodCategoryCard(
               image: Icons.all_inbox,
               title: "Cake",
             ),
             const SizedBox(width: 15),
-            _buildViewCard(
+            FoodCategoryCard(
               image: Icons.all_inbox,
               title: "Sea Food",
             ),
             const SizedBox(width: 15),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildViewCard({
-    IconData? image,
-    String? title,
-    Color? color,
-  }) {
-    return GestureDetector(
-      child: Card(
-        color: const Color(0xFF88464A),
-        elevation: 0,
-        child: Container(
-          width: 70,
-          height: 80,
-          decoration: BoxDecoration(
-            color: color,
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(8),
-              topRight: Radius.circular(8),
-              bottomLeft: Radius.circular(8),
-              bottomRight: Radius.circular(8),
-            ),
-          ),
-          child: Column(
-            children: [
-              const SizedBox(height: 10),
-              Icon(
-                image,
-                size: 30,
-                color: const Color(0xFFF37C83),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                title ?? "",
-                style: const TextStyle(
-                  color: Color(0xFFF37C83),
-                  fontFamily: "Mynerve",
-                ),
-              ),
-            ],
-          ),
         ),
       ),
     );

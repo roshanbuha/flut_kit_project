@@ -40,6 +40,7 @@ dependencies:
   google_nav_bar: ^5.0.6
   date_picker_timeline: ^1.2.3
   day_night_switcher: ^0.2.0+1
+  get:
 
 
 dev_dependencies:
@@ -75,6 +76,7 @@ flutter:
     - assets/
     - assets/homemade/
     - assets/cook/
+    - assets/shopping/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -1,4 +1,5 @@
 import 'package:flut_kit_project/cookifyApp/ui/splash_screen.dart';
+import 'package:flut_kit_project/shoppingApp/ui/dashbord_page.dart';
 import 'package:flut_kit_project/utils/card_widgets.dart';
 import 'package:flut_kit_project/utils/coming_very_soon_container.dart';
 import 'package:flut_kit_project/utils/text_widget.dart';
@@ -67,7 +68,17 @@ class _AppScreenState extends State<AppScreen> {
                   ),
                 ),
                 CardWidgets(icon: Icons.health_and_safety, title: "Medi Care"),
-                CardWidgets(icon: Icons.shopping_bag, title: "Shopping"),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const ShoppingDashbord(),
+                      ),
+                    );
+                  },
+                  child:
+                      CardWidgets(icon: Icons.shopping_bag, title: "Shopping"),
+                ),
                 CardWidgets(icon: Icons.home, title: "Estate"),
                 CardWidgets(icon: Icons.apple, title: "Grocery"),
                 CardWidgets(icon: Icons.favorite_border, title: "Dating"),

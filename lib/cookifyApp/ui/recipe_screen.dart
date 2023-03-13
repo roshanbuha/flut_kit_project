@@ -14,12 +14,16 @@ class _CookRecipeScreenState extends State<CookRecipeScreen> {
       backgroundColor: Colors.white10,
       appBar: AppBar(
         elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.white, //change your color here
+        ),
         backgroundColor: Colors.transparent,
         actions: const [
           Padding(
             padding: EdgeInsets.only(right: 15),
             child: Icon(
               Icons.favorite_border,
+              color: Color(0xFFF37C83),
             ),
           ),
         ],

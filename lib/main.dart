@@ -1,6 +1,8 @@
+import 'package:flut_kit_project/local_string.dart';
 import 'package:flut_kit_project/ui/dashbord_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +26,9 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      translations: LocaleString(),
+      locale: const Locale('en', 'us'),
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -32,6 +36,7 @@ class _MyAppState extends State<MyApp> {
           color: Color(0xFFFFFFFF),
           foregroundColor: Colors.black,
           iconTheme: IconThemeData(color: Colors.black),
+          actionsIconTheme: IconThemeData(color: Colors.black),
         ),
         scaffoldBackgroundColor: const Color(0xFFFFFFFF),
         cardColor: const Color(0xFFFFFFFF),
@@ -61,21 +66,16 @@ class _MyAppState extends State<MyApp> {
           color: Color(0xFF000000),
           foregroundColor: Colors.white,
           iconTheme: IconThemeData(color: Colors.white),
+          actionsIconTheme: IconThemeData(color: Colors.white),
         ),
         scaffoldBackgroundColor: const Color(0xFF000000),
         cardColor: const Color(0xFF000000),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: Color(0xFF000000),
         ),
-        cardTheme: CardTheme(
-          color: Colors.grey.shade900,
-        ),
-        drawerTheme: const DrawerThemeData(
-          backgroundColor: Color(0xFF000000),
-        ),
-        listTileTheme: const ListTileThemeData(
-          textColor: Colors.white,
-        ),
+        cardTheme: CardTheme(color: Colors.grey.shade900),
+        drawerTheme: const DrawerThemeData(backgroundColor: Color(0xFF000000)),
+        listTileTheme: const ListTileThemeData(textColor: Colors.white),
         textTheme: const TextTheme(
           displayLarge: TextStyle(color: Colors.white),
           displayMedium: TextStyle(color: Colors.white),
@@ -84,6 +84,7 @@ class _MyAppState extends State<MyApp> {
           titleSmall: TextStyle(color: Colors.white),
           titleLarge: TextStyle(color: Colors.white),
           bodySmall: TextStyle(color: Colors.white),
+          bodyLarge: TextStyle(color: Colors.white),
         ),
       ),
       themeMode: isDarkModeEnabled ? ThemeMode.dark : ThemeMode.light,

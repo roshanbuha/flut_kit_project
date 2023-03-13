@@ -4,7 +4,10 @@ import 'package:flut_kit_project/ui/pageview/apps_screen.dart';
 import 'package:flut_kit_project/ui/pageview/material_page.dart';
 import 'package:flut_kit_project/ui/pageview/other_screen.dart';
 import 'package:flut_kit_project/ui/pageview/screen_page.dart';
+import 'package:flut_kit_project/ui/setting_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
+import 'package:get/utils.dart';
 
 class DashbordPage extends StatefulWidget {
   DashbordPage({
@@ -14,6 +17,7 @@ class DashbordPage extends StatefulWidget {
   }) : super(key: key);
   bool? dark;
   Function(bool)? onChange;
+
   @override
   State<DashbordPage> createState() => _DashbordPageState();
 }
@@ -70,6 +74,77 @@ class _DashbordPageState extends State<DashbordPage> {
     ];
   }
 
+  final List language = [
+    {
+      'name': 'ENGLISH',
+      'locale': const Locale('en', 'US'),
+    },
+    {
+      'name': 'हिंदी',
+      'locale': const Locale('hi', 'IN'),
+    },
+    {
+      'name': 'ગુજરાતી',
+      'locale': const Locale('gu', 'IN'),
+    },
+  ];
+
+  updateLanguage(Locale locale) {
+    Get.back();
+    Get.updateLocale(locale);
+  }
+
+  buildLanguageDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (builder) {
+        return AlertDialog(
+          elevation: 10,
+          backgroundColor: isDarkModeEnabled ? Colors.black : Colors.white,
+          title: Text(
+            'Choose Your Language',
+            style: TextStyle(
+              color: isDarkModeEnabled ? Colors.white : Colors.black,
+            ),
+          ),
+          content: SizedBox(
+            width: double.maxFinite,
+            child: ListView.separated(
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                    child: Text(
+                      language[index]['name'],
+                      style: TextStyle(
+                        color: isDarkModeEnabled ? Colors.white : Colors.black,
+                      ),
+                    ),
+                    onTap: () {
+                      print(language[index]['name']);
+                      updateLanguage(language[index]['locale']);
+                    },
+                  ),
+                );
+              },
+              separatorBuilder: (context, index) {
+                return Container();
+              },
+              itemCount: language.length,
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  void onStateChanged(bool isDarkModeEnabled) {
+    setState(() {
+      this.isDarkModeEnabled = isDarkModeEnabled;
+    });
+  }
+
   PageController pageController = PageController(
     initialPage: 0,
     keepPage: true,
@@ -112,6 +187,32 @@ class _DashbordPageState extends State<DashbordPage> {
             );
           },
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) =>
+                        SettingScreen(
+                      onChange: (bool isDarkModeEnabled1) {
+                        onStateChanged(isDarkModeEnabled1);
+                      },
+                    ),
+                    transitionDuration: const Duration(seconds: 2),
+                    transitionsBuilder: (_, a, __, c) =>
+                        FadeTransition(opacity: a, child: c),
+                  ),
+                );
+              },
+              icon: const Icon(
+                Icons.settings,
+              ),
+            ),
+          ),
+        ],
       ),
       drawer: Drawer(
         child: SafeArea(
@@ -121,8 +222,8 @@ class _DashbordPageState extends State<DashbordPage> {
             child: Column(
               children: [
                 const SizedBox(height: 20),
-                Image.network(
-                  "https://flutkit.coderthemes.com/images/logo-main.png",
+                Image.asset(
+                  "assets/logo-main.png",
                   height: 100,
                   width: 100,
                 ),
@@ -154,17 +255,13 @@ class _DashbordPageState extends State<DashbordPage> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                DayNightSwitcher(
-                  isDarkModeEnabled: isDarkModeEnabled,
-                  onStateChanged: (isDarkModeEnabled) {
-                    this.isDarkModeEnabled = isDarkModeEnabled;
-                    widget.onChange!(isDarkModeEnabled);
-                  },
-                ),
                 ListTile(
                   onTap: () {},
-                  title: const Text(
-                    "Dark Mode",
+                  title: Text(
+                    "dark".tr,
+                    style: TextStyle(
+                      color: isDarkModeEnabled ? Colors.white : Colors.black,
+                    ),
                   ),
                   leading: Container(
                     decoration: BoxDecoration(
@@ -180,12 +277,25 @@ class _DashbordPageState extends State<DashbordPage> {
                       color: Colors.brown,
                     ),
                   ),
-                  trailing: const Icon(Icons.arrow_forward_ios),
+                  trailing: DayNightSwitcherIcon(
+                    isDarkModeEnabled: isDarkModeEnabled,
+                    onStateChanged: (isDarkModeEnabled) {
+                      this.isDarkModeEnabled = isDarkModeEnabled;
+                      widget.onChange!(isDarkModeEnabled);
+                    },
+                  ),
                 ),
                 const SizedBox(height: 20),
                 ListTile(
-                  title: const Text(
-                    "Language",
+                  onTap: () {
+                    buildLanguageDialog(context);
+                    setState(() {});
+                  },
+                  title: Text(
+                    "language".tr,
+                    style: TextStyle(
+                      color: isDarkModeEnabled ? Colors.white : Colors.black,
+                    ),
                   ),
                   leading: Container(
                     height: 40,
@@ -201,12 +311,18 @@ class _DashbordPageState extends State<DashbordPage> {
                       color: Colors.orange,
                     ),
                   ),
-                  trailing: const Icon(Icons.arrow_forward_ios),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    color: isDarkModeEnabled ? Colors.white : Colors.black,
+                  ),
                 ),
                 const SizedBox(height: 20),
                 ListTile(
-                  title: const Text(
-                    "Right to Left (RTL)",
+                  title: Text(
+                    "right_to_left".tr,
+                    style: TextStyle(
+                      color: isDarkModeEnabled ? Colors.white : Colors.black,
+                    ),
                   ),
                   leading: Container(
                     height: 40,
@@ -222,15 +338,21 @@ class _DashbordPageState extends State<DashbordPage> {
                       color: Colors.blue,
                     ),
                   ),
-                  trailing: const Icon(Icons.arrow_forward_ios),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    color: isDarkModeEnabled ? Colors.white : Colors.black,
+                  ),
                 ),
                 const SizedBox(height: 20),
                 const Divider(
                   color: Colors.grey,
                 ),
                 ListTile(
-                  title: const Text(
-                    "Documentation",
+                  title: Text(
+                    "documentation".tr,
+                    style: TextStyle(
+                      color: isDarkModeEnabled ? Colors.white : Colors.black,
+                    ),
                   ),
                   leading: Container(
                     height: 40,
@@ -246,12 +368,14 @@ class _DashbordPageState extends State<DashbordPage> {
                       color: Colors.blue,
                     ),
                   ),
-                  trailing: const Icon(Icons.arrow_forward_ios),
                 ),
                 const SizedBox(height: 20),
                 ListTile(
-                  title: const Text(
-                    "Change Log",
+                  title: Text(
+                    "change_log".tr,
+                    style: TextStyle(
+                      color: isDarkModeEnabled ? Colors.white : Colors.black,
+                    ),
                   ),
                   leading: Container(
                     height: 40,
@@ -267,7 +391,6 @@ class _DashbordPageState extends State<DashbordPage> {
                       color: Colors.orange,
                     ),
                   ),
-                  trailing: const Icon(Icons.arrow_forward_ios),
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
@@ -278,8 +401,8 @@ class _DashbordPageState extends State<DashbordPage> {
                     ),
                   ),
                   onPressed: () {},
-                  child: const Text(
-                    "BUY NOW",
+                  child: Text(
+                    "buy_now".tr,
                     style: TextStyle(fontWeight: FontWeight.w500),
                   ),
                 )

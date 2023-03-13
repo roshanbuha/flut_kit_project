@@ -1,3 +1,4 @@
+import 'package:flut_kit_project/cookifyApp/ui/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,7 @@ class CookProfileScreen extends StatefulWidget {
 class _CookProfileScreenState extends State<CookProfileScreen> {
   bool switchValue = true;
   bool _switchValue = false;
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -283,8 +285,15 @@ class _CookProfileScreenState extends State<CookProfileScreen> {
               children: [
                 MaterialButton(
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  onPressed: () {},
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => CookifySplashScreen(),
+                      ),
+                    );
+                  },
                   color: const Color(0xFFF37C83),
                   child: const Text(
                     "LOGOUT",
