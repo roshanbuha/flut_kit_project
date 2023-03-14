@@ -11,7 +11,6 @@ class CookMealScreen extends StatefulWidget {
 }
 
 class _CookMealScreenState extends State<CookMealScreen> {
-  DateTime _selectedValue = DateTime.now();
   DatePickerController _controller = DatePickerController();
 
   @override
@@ -127,9 +126,7 @@ class _CookMealScreenState extends State<CookMealScreen> {
       dayTextStyle: const TextStyle(color: Colors.white),
       dateTextStyle: const TextStyle(color: Colors.white),
       onDateChange: (date) {
-        setState(() {
-          _selectedValue = date;
-        });
+        setState(() {});
       },
     );
   }

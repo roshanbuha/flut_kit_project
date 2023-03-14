@@ -290,7 +290,7 @@ class _CookProfileScreenState extends State<CookProfileScreen> {
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => CookifySplashScreen(),
+                        builder: (context) => const CookifySplashScreen(),
                       ),
                     );
                   },

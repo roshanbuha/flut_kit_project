@@ -1,4 +1,5 @@
 import 'package:flut_kit_project/shoppingApp/ui/home_page.dart';
+import 'package:flut_kit_project/shoppingApp/ui/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
@@ -92,6 +93,7 @@ class _ShoppingDashbordState extends State<ShoppingDashbord> {
       },
       children: const [
         ShoppingHomePage(),
+        ShoppingSearch(),
       ],
     );
   }
