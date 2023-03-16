@@ -36,10 +36,15 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_advanced_drawer: ^1.3.2
-  flutter_launcher_icons: ^0.11.0
+  flutter_launcher_icons: ^0.12.0
   google_nav_bar: ^5.0.6
   date_picker_timeline: ^1.2.3
   day_night_switcher: ^0.2.0+1
+  flutter_colorpicker: ^1.0.3
+  http: 0.12.2
+#  flutter_dialogflow: ^0.1.3
+  flutter_dialogflow_v2: ^0.3.1
+  bubble: ^1.2.1
   get:
 
 

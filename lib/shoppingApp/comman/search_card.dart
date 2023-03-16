@@ -39,7 +39,7 @@ class _SearchCardState extends State<SearchCard> {
               child: Image.asset(
                 "${widget.image}",
                 fit: BoxFit.fitWidth,
-                height: 155,
+                height: 130,
                 width: 192,
               ),
             ),
