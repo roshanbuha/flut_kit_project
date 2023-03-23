@@ -214,7 +214,7 @@ class _ShoppingProfileScreenState extends State<ShoppingProfileScreen> {
           onTap: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => ChatbotDialogflow(),
+                builder: (context) => const ChatbotDialogflow(),
               ),
             );
           },

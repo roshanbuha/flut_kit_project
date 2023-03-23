@@ -2,58 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dialogflow_v2/flutter_dialogflow_v2.dart' as df;
 
 class ChatbotDialogflow extends StatefulWidget {
-  ChatbotDialogflow({Key? key, this.title}) : super(key: key);
+  const ChatbotDialogflow({Key? key, this.title}) : super(key: key);
 
   final String? title;
 
   @override
-  _ChatbotDialogflowState createState() => _ChatbotDialogflowState();
+  State createState() => _ChatbotDialogflowState();
 }
 
 class _ChatbotDialogflowState extends State<ChatbotDialogflow> {
   final List<ChatMessage> _messages = <ChatMessage>[];
   final TextEditingController _textController = TextEditingController();
 
-  Widget _buildTextComposer() {
-    return IconTheme(
-      data: IconThemeData(color: Theme.of(context).accentColor),
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: Row(
-          children: <Widget>[
-            Flexible(
-              child: TextField(
-                controller: _textController,
-                onSubmitted: _handleSubmitted,
-                decoration:
-                    const InputDecoration.collapsed(hintText: 'Send a message'),
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 4.0),
-              child: IconButton(
-                  icon: const Icon(Icons.send),
-                  onPressed: () => _handleSubmitted(_textController.text)),
-            ),
-            const SizedBox(height: 100)
-          ],
-        ),
-      ),
-    );
-  }
-
-  void response(query) async {
+  void response(query, String text) async {
     _textController.clear();
     df.AuthGoogle authGoogle =
         await df.AuthGoogle(fileJson: 'assets/chat-ekwe-ba2ea4437a38.json')
             .build();
     df.Dialogflow dialogflow =
         df.Dialogflow(authGoogle: authGoogle, sessionId: '123456');
-    df.DetectIntentResponse response =
-        await dialogflow.detectIntentFromText(query, "id");
+    await dialogflow.detectIntentFromText(
+        query, df.Language.spanishLatinAmerica);
     ChatMessage message = ChatMessage(
-      text: response.responseId,
-      name: 'Munaroh',
+      text: text,
+      name: 'Chirag',
       type: false,
     );
     setState(() {
@@ -65,13 +37,13 @@ class _ChatbotDialogflowState extends State<ChatbotDialogflow> {
     _textController.clear();
     ChatMessage message = ChatMessage(
       text: text,
-      name: 'Djanuar',
+      name: 'Roshan',
       type: true,
     );
     setState(() {
       _messages.insert(0, message);
     });
-    response(text);
+    response(text, text);
   }
 
   @override
@@ -79,28 +51,77 @@ class _ChatbotDialogflowState extends State<ChatbotDialogflow> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: const Text('Chat Me'),
+        centerTitle: false,
+        title: const Text('Chat bot'),
       ),
-      body: Column(children: <Widget>[
-        Flexible(
+      body: Column(
+        children: <Widget>[
+          Flexible(
             child: ListView.builder(
-          padding: const EdgeInsets.all(8.0),
-          reverse: true,
-          itemBuilder: (_, int index) => _messages[index],
-          itemCount: _messages.length,
-        )),
-        const Divider(height: 1.0),
-        Container(
-          decoration: BoxDecoration(color: Theme.of(context).cardColor),
-          child: _buildTextComposer(),
+              padding: const EdgeInsets.all(8.0),
+              reverse: true,
+              itemBuilder: (_, int index) => _messages[index],
+              itemCount: _messages.length,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            child: _buildTextComposer(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTextComposer() {
+    return Row(
+      children: <Widget>[
+        Expanded(
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.black,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: TextField(
+              controller: _textController,
+              onSubmitted: _handleSubmitted,
+              decoration: const InputDecoration(
+                contentPadding: EdgeInsets.all(15),
+                hintText: 'Send a message',
+                hintStyle: TextStyle(
+                  color: Colors.white,
+                ),
+                border: InputBorder.none,
+              ),
+              style: const TextStyle(color: Colors.white),
+            ),
+          ),
         ),
-      ]),
+        const SizedBox(width: 15),
+        CircleAvatar(
+          backgroundColor: Colors.black,
+          child: IconButton(
+            icon: const Icon(
+              Icons.send,
+              size: 20,
+              color: Colors.white,
+            ),
+            onPressed: () => _handleSubmitted(_textController.text),
+          ),
+        ),
+        const SizedBox(height: 100)
+      ],
     );
   }
 }
 
 class ChatMessage extends StatelessWidget {
-  ChatMessage({this.text, this.name, required this.type});
+  ChatMessage({
+    super.key,
+    this.text,
+    this.name,
+    required this.type,
+  });
 
   String? text;
   String? name;
@@ -118,7 +139,10 @@ class ChatMessage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text("$name", style: const TextStyle(fontWeight: FontWeight.bold)),
+            Text(
+              "$name",
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
             Container(
               margin: const EdgeInsets.only(top: 5.0),
               child: Text("$text"),
@@ -135,7 +159,10 @@ class ChatMessage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
-            Text("$name", style: Theme.of(context).textTheme.bodySmall),
+            Text(
+              "$name",
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
             Container(
               margin: const EdgeInsets.only(top: 5.0),
               child: Text("$text"),
@@ -146,7 +173,8 @@ class ChatMessage extends StatelessWidget {
       Container(
         margin: const EdgeInsets.only(left: 16.0),
         child: const CircleAvatar(
-            backgroundImage: AssetImage("assets/cook/profile_1.jpeg")),
+          backgroundImage: AssetImage("assets/cook/profile_1.jpeg"),
+        ),
       ),
     ];
   }

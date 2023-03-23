@@ -11,7 +11,7 @@ class CookMealScreen extends StatefulWidget {
 }
 
 class _CookMealScreenState extends State<CookMealScreen> {
-  DatePickerController _controller = DatePickerController();
+  DatePickerController controller = DatePickerController();
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +118,7 @@ class _CookMealScreenState extends State<CookMealScreen> {
       DateTime.now(),
       width: 60,
       height: 80,
-      controller: _controller,
+      controller: controller,
       initialSelectedDate: DateTime.now(),
       selectionColor: const Color(0xFFF37C83),
       selectedTextColor: Colors.white,
