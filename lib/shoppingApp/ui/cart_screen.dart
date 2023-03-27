@@ -87,9 +87,12 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const Icon(
-                          Icons.exposure_plus_1,
-                          color: Colors.grey,
+                        GestureDetector(
+                          onTap: () {},
+                          child: const Icon(
+                            Icons.exposure_plus_1,
+                            color: Colors.grey,
+                          ),
                         ),
                       ],
                     ),
@@ -118,11 +121,14 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                           ),
                         ),
                         Row(
-                          children: const [
-                            SizedBox(width: 5),
-                            Icon(
-                              Icons.exposure_minus_1,
-                              color: Colors.grey,
+                          children: [
+                            const SizedBox(width: 5),
+                            GestureDetector(
+                              onTap: () {},
+                              child: const Icon(
+                                Icons.exposure_minus_1,
+                                color: Colors.grey,
+                              ),
                             )
                           ],
                         ),
@@ -187,25 +193,20 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
   }
 
   Widget _buildButton() {
-    return Row(
-      children: [
-        SizedBox(
-          height: 40,
-          width: 390,
-          child: MaterialButton(
-            onPressed: () {},
-            color: Colors.lightBlue,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Icon(Icons.shopping_cart_outlined),
-                SizedBox(width: 10),
-                Text("CHECK OUT"),
-              ],
-            ),
-          ),
+    return SizedBox(
+      height: 40,
+      child: MaterialButton(
+        onPressed: () {},
+        color: Colors.lightBlue,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Icon(Icons.shopping_cart_outlined),
+            SizedBox(width: 10),
+            Text("CHECK OUT"),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

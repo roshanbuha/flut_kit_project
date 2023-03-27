@@ -21,8 +21,8 @@ class _ChatbotDialogflowState extends State<ChatbotDialogflow> {
             .build();
     df.Dialogflow dialogflow =
         df.Dialogflow(authGoogle: authGoogle, sessionId: '123456');
-    await dialogflow.detectIntentFromText(
-        query, df.Language.spanishLatinAmerica);
+    df.DetectIntentResponse response =
+        await dialogflow.detectIntentFromText(query, "id");
     ChatMessage message = ChatMessage(
       text: text,
       name: 'Chirag',
@@ -50,7 +50,7 @@ class _ChatbotDialogflowState extends State<ChatbotDialogflow> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
+        elevation: 5,
         centerTitle: false,
         title: const Text('Chat bot'),
       ),
