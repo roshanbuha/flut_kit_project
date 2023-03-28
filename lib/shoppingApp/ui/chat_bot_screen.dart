@@ -84,7 +84,7 @@ class _ChatbotDialogflowState extends State<ChatbotDialogflow> {
             ),
             child: TextField(
               controller: _textController,
-              onSubmitted: _handleSubmitted,
+              // onSubmitted: _handleSubmitted,
               decoration: const InputDecoration(
                 contentPadding: EdgeInsets.all(15),
                 hintText: 'Send a message',
@@ -106,7 +106,9 @@ class _ChatbotDialogflowState extends State<ChatbotDialogflow> {
               size: 20,
               color: Colors.white,
             ),
-            onPressed: () => _handleSubmitted(_textController.text),
+            onPressed: () => _handleSubmitted(
+              _textController.text,
+            ),
           ),
         ),
         const SizedBox(height: 100)

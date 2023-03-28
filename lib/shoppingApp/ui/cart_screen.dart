@@ -1,3 +1,5 @@
+import 'package:flut_kit_project/shoppingApp/comman/CartListModel.dart';
+import 'package:flut_kit_project/shoppingApp/comman/cartlist.dart';
 import 'package:flutter/material.dart';
 
 class ShoppingCartScreen extends StatefulWidget {
@@ -8,6 +10,25 @@ class ShoppingCartScreen extends StatefulWidget {
 }
 
 class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
+  List<CartListModel> cartListModelList = [
+    CartListModel(
+      "assets/shopping/sweet_gems.jpg",
+      "Pumpkin\nCream",
+      "\$13.99",
+    ),
+    CartListModel(
+      "assets/shopping/sweet_gems.jpg",
+      "Pumpkin\nCream",
+      "\$13.99",
+    ),
+    CartListModel(
+      "assets/shopping/sweet_gems.jpg",
+      "Pumpkin\nCream",
+      "\$13.99",
+    ),
+  ];
+
+  int itemCount = 0;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -16,22 +37,25 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
         child: Column(
           children: [
             const SizedBox(height: 50),
-            _buildForList(
-              image: "assets/shopping/sweet_gems.jpg",
-              name: "Pumpkin\nCream",
-              price: "\$13.99",
-            ),
-            const SizedBox(height: 15),
-            _buildForList(
-              image: "assets/shopping/sweet_gems.jpg",
-              name: "Carrom\nRoll",
-              price: "\$13.99",
-            ),
-            const SizedBox(height: 15),
-            _buildForList(
-              image: "assets/shopping/sweet_gems.jpg",
-              name: "Other\nSeed",
-              price: "\$13.99",
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: cartListModelList.length,
+              itemBuilder: (context, index) {
+                return CartList(
+                  image: cartListModelList[index].image,
+                  name: cartListModelList[index].name,
+                  price: cartListModelList[index].price,
+                  count: cartListModelList[index].count,
+                  onPlusTap: () {
+                    cartListModelList[index].getSum();
+                    setState(() {});
+                  },
+                  onMinusTap: () {
+                    cartListModelList[index].getMinus();
+                    setState(() {});
+                  },
+                );
+              },
             ),
             const SizedBox(height: 15),
             const Divider(color: Colors.grey),
@@ -41,103 +65,6 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
             _buildTotalText(),
             const SizedBox(height: 15),
             _buildButton(),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildForList({
-    String? image,
-    String? name,
-    String? price,
-  }) {
-    return SizedBox(
-      width: double.infinity,
-      height: 110,
-      child: Card(
-        color: Colors.white10,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5),
-        ),
-        elevation: 10,
-        child: Row(
-          children: [
-            Expanded(
-              flex: 1,
-              child: Image.asset(
-                "$image",
-                fit: BoxFit.cover,
-                height: 120,
-              ),
-            ),
-            Expanded(
-              flex: 3,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 15, right: 20, left: 10),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "$name",
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {},
-                          child: const Icon(
-                            Icons.exposure_plus_1,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        SizedBox(width: 100),
-                        Text(
-                          "1",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )
-                      ],
-                    ),
-                    const SizedBox(height: 5),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "$price",
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            const SizedBox(width: 5),
-                            GestureDetector(
-                              onTap: () {},
-                              child: const Icon(
-                                Icons.exposure_minus_1,
-                                color: Colors.grey,
-                              ),
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
           ],
         ),
       ),

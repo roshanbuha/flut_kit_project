@@ -10,7 +10,6 @@ class CustomTextFieldWidget extends StatefulWidget {
     this.onTap,
     this.controller,
     this.maxLength,
-    this.validation,
     this.obscureText,
     Key? key,
   }) : super(key: key);
@@ -23,7 +22,6 @@ class CustomTextFieldWidget extends StatefulWidget {
   final TextInputType? keyboardType;
   final Function? onTap;
   final TextEditingController? controller;
-  final validation;
   bool? obscureText = false;
 
   @override
@@ -42,7 +40,6 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
       ),
       child: TextFormField(
         obscureText: widget.obscureText ?? false,
-        validator: widget.validation,
         onTap: () => widget.onTap,
         cursorColor: Colors.black12,
         controller: widget.controller,

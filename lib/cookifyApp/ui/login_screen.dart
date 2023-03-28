@@ -8,7 +8,7 @@ class CookLoginScreen extends StatefulWidget {
   const CookLoginScreen({super.key});
 
   @override
-  _CookLoginScreenState createState() => _CookLoginScreenState();
+  State createState() => _CookLoginScreenState();
 }
 
 class _CookLoginScreenState extends State<CookLoginScreen> {

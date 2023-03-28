@@ -25,27 +25,24 @@ class DashbordPage extends StatefulWidget {
 class _DashbordPageState extends State<DashbordPage> {
   int _currentIndex = 0;
   bool isDarkModeEnabled = false;
+  String? languageRadio;
+  bool right = false;
 
   static final List<Widget> _appBarTitle = <Widget>[
     const Text(
       'Animation',
-      // style: TextStyle(color: Colors.black),
     ),
     const Text(
       'Apps',
-      // style: TextStyle(color: Colors.black),
     ),
     const Text(
       'Screen',
-      // style: TextStyle(color: Colors.black),
     ),
     const Text(
       'Material Widget',
-      // style: TextStyle(color: Colors.black),
     ),
     const Text(
       'Other Widget',
-      // style: TextStyle(color: Colors.black),
     ),
   ];
 
@@ -76,18 +73,32 @@ class _DashbordPageState extends State<DashbordPage> {
 
   final List language = [
     {
-      'name': 'ENGLISH',
+      'name': 'English',
       'locale': const Locale('en', 'US'),
     },
     {
-      'name': 'हिंदी',
+      'name': 'Hindi',
       'locale': const Locale('hi', 'IN'),
     },
     {
-      'name': 'ગુજરાતી',
+      'name': 'Gujarati',
       'locale': const Locale('gu', 'IN'),
     },
+    {
+      'name': 'Chinese',
+      'locale': const Locale('ch', 'IN'),
+    },
+    {
+      'name': 'Arabic',
+      'locale': const Locale('ab', 'IN'),
+    },
+    {
+      'name': 'French',
+      'locale': const Locale('fr', 'IN'),
+    }
   ];
+
+  String oneValue = 'English';
 
   updateLanguage(Locale locale) {
     Get.back();
@@ -100,7 +111,8 @@ class _DashbordPageState extends State<DashbordPage> {
       builder: (builder) {
         return AlertDialog(
           elevation: 10,
-          backgroundColor: isDarkModeEnabled ? Colors.black : Colors.white,
+          backgroundColor:
+              isDarkModeEnabled ? Colors.grey.shade900 : Colors.white,
           title: Text(
             'Choose Your Language',
             style: TextStyle(
@@ -109,30 +121,53 @@ class _DashbordPageState extends State<DashbordPage> {
           ),
           content: SizedBox(
             width: double.maxFinite,
-            child: ListView.separated(
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: GestureDetector(
-                    child: Text(
-                      language[index]['name'],
-                      style: TextStyle(
-                        color: isDarkModeEnabled ? Colors.white : Colors.black,
+            child: StatefulBuilder(
+                builder: (BuildContext context, StateSetter setState) {
+              return ListView.separated(
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GestureDetector(
+                      child: Row(
+                        children: [
+                          Radio(
+                            value: language[index]['name'],
+                            groupValue: oneValue,
+                            onChanged: (value) {
+                              print(language[index]['name']);
+                              updateLanguage(language[index]['locale']);
+                              setState(() {
+                                oneValue = value.toString();
+                              });
+                            },
+                          ),
+                          Text(
+                            language[index]['name'],
+                            textDirection: TextDirection.rtl,
+                            style: TextStyle(
+                              color: isDarkModeEnabled
+                                  ? Colors.white
+                                  : Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
                       ),
+                      onTap: () {
+                        print(language[index]['name']);
+                        updateLanguage(language[index]['locale']);
+                        oneValue = language[index]['name'];
+                      },
                     ),
-                    onTap: () {
-                      print(language[index]['name']);
-                      updateLanguage(language[index]['locale']);
-                    },
-                  ),
-                );
-              },
-              separatorBuilder: (context, index) {
-                return Container();
-              },
-              itemCount: language.length,
-            ),
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return Container();
+                },
+                itemCount: language.length,
+              );
+            }),
           ),
         );
       },
@@ -201,7 +236,7 @@ class _DashbordPageState extends State<DashbordPage> {
                         onStateChanged(isDarkModeEnabled1);
                       },
                     ),
-                    transitionDuration: const Duration(seconds: 2),
+                    transitionDuration: const Duration(seconds: 1),
                     transitionsBuilder: (_, a, __, c) =>
                         FadeTransition(opacity: a, child: c),
                   ),
@@ -318,6 +353,7 @@ class _DashbordPageState extends State<DashbordPage> {
                 ),
                 const SizedBox(height: 20),
                 ListTile(
+                  onTap: () {},
                   title: Text(
                     "right_to_left".tr,
                     style: TextStyle(

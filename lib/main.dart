@@ -1,4 +1,4 @@
-import 'package:flut_kit_project/local_string.dart';
+import 'package:flut_kit_project/language.dart';
 import 'package:flut_kit_project/ui/dashbord_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -29,6 +29,7 @@ class _MyAppState extends State<MyApp> {
     return GetMaterialApp(
       translations: LocaleString(),
       locale: const Locale('en', 'us'),
+      // textDirection: TextDirection.rtl,
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -72,6 +73,9 @@ class _MyAppState extends State<MyApp> {
         cardColor: const Color(0xFF000000),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: Color(0xFF000000),
+        ),
+        radioTheme: RadioThemeData(
+          fillColor: MaterialStateProperty.all(Colors.white),
         ),
         cardTheme: CardTheme(color: Colors.grey.shade900),
         drawerTheme: const DrawerThemeData(backgroundColor: Color(0xFF000000)),

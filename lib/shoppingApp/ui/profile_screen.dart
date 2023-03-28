@@ -2,6 +2,7 @@ import 'package:flut_kit_project/shoppingApp/ui/category_page.dart';
 import 'package:flut_kit_project/shoppingApp/ui/chat_bot_screen.dart';
 import 'package:flut_kit_project/shoppingApp/ui/history_page.dart';
 import 'package:flut_kit_project/shoppingApp/ui/order_screen.dart';
+import 'package:flut_kit_project/ui/dashbord_page.dart';
 import 'package:flutter/material.dart';
 
 class ShoppingProfileScreen extends StatefulWidget {
@@ -14,19 +15,21 @@ class ShoppingProfileScreen extends StatefulWidget {
 class _ShoppingProfileScreenState extends State<ShoppingProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 20, left: 20),
-      child: Column(
-        children: [
-          const SizedBox(height: 50),
-          _buildImage(),
-          const SizedBox(height: 20),
-          _buildContainer(),
-          const SizedBox(height: 20),
-          _buildList(),
-          const SizedBox(height: 20),
-          _buildButton(),
-        ],
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.only(right: 20, left: 20),
+        child: Column(
+          children: [
+            const SizedBox(height: 50),
+            _buildImage(),
+            const SizedBox(height: 20),
+            _buildContainer(),
+            const SizedBox(height: 20),
+            _buildList(),
+            const SizedBox(height: 20),
+            _buildButton(),
+          ],
+        ),
       ),
     );
   }
@@ -243,7 +246,13 @@ class _ShoppingProfileScreenState extends State<ShoppingProfileScreen> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         MaterialButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => DashbordPage(),
+              ),
+            );
+          },
           color: Colors.lightBlueAccent,
           child: Row(
             children: const [
