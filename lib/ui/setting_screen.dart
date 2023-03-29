@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:get/utils.dart';
@@ -77,7 +79,7 @@ class _SettingScreenState extends State<SettingScreen> {
                             value: language[index]['name'],
                             groupValue: oneValue,
                             onChanged: (value) {
-                              print(language[index]['name']);
+                              log(language[index]['name']);
                               updateLanguage(
                                 language[index]['locale'],
                               );
@@ -98,7 +100,7 @@ class _SettingScreenState extends State<SettingScreen> {
                         ],
                       ),
                       onTap: () {
-                        print(language[index]['name']);
+                        log(language[index]['name']);
                         updateLanguage(
                           language[index]['locale'],
                         );

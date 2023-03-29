@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flut_kit_project/ui/pageview/animation_screen.dart';
 import 'package:flut_kit_project/ui/pageview/apps_screen.dart';
@@ -135,7 +137,7 @@ class _DashbordPageState extends State<DashbordPage> {
                             value: language[index]['name'],
                             groupValue: oneValue,
                             onChanged: (value) {
-                              print(language[index]['name']);
+                              log(language[index]['name']);
                               updateLanguage(language[index]['locale']);
                               setState(() {
                                 oneValue = value.toString();
@@ -144,7 +146,6 @@ class _DashbordPageState extends State<DashbordPage> {
                           ),
                           Text(
                             language[index]['name'],
-                            textDirection: TextDirection.rtl,
                             style: TextStyle(
                               color: isDarkModeEnabled
                                   ? Colors.white
@@ -155,7 +156,7 @@ class _DashbordPageState extends State<DashbordPage> {
                         ],
                       ),
                       onTap: () {
-                        print(language[index]['name']);
+                        log(language[index]['name']);
                         updateLanguage(language[index]['locale']);
                         oneValue = language[index]['name'];
                       },

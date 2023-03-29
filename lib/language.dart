@@ -42,11 +42,11 @@ class LocaleString extends Translations {
         // ARABIC LANGUAGE
         'ab_IN': {
           'language': 'لغة',
-          'dark': 'وضع الضوء',
-          'right_to_left': 'من اليمين الى اليسار (RTL)',
+          'dark': 'الضوء وضع',
+          'right_to_left': '(LTR) من اليمين الى اليسار',
           'documentation': 'توثيق',
-          'change_log': 'سجل التغيير',
-          'buy_now': 'اشتري الآن',
+          'change_log': 'التغيير سجل',
+          'buy_now': 'الآن اشتري',
         },
         // FRENCH LANGUAGE
         'fr_IN': {
